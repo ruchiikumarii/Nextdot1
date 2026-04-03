@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
@@ -14,10 +15,11 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Products", href: "#products" },
-    { name: "Capabilities", href: "#capabilities" },
-    { name: "Use Cases", href: "#use-cases" },
-    { name: "Company", href: "#company" },
+    { name: "About Us", href: "/about-us" },
+    { name: "What We Do", href: "/what-we-do" },
+    { name: "AI Capability Centre", href: "/ai-capability-centre" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -32,7 +34,7 @@ export const Navbar = () => {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center group cursor-pointer">
+          <Link to="/" className="flex items-center group cursor-pointer">
             <div className="w-10 h-10 bg-ink rounded-xl flex items-center justify-center shadow-md shrink-0 transition-transform duration-500 group-hover:scale-105">
               <div className="w-3 h-3 bg-paper rounded-full" />
             </div>
@@ -49,17 +51,17 @@ export const Navbar = () => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </Link>
           
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a 
+              <Link 
                 key={link.name} 
-                href={link.href} 
+                to={link.href} 
                 className="text-sm font-medium text-ink/70 hover:text-ink transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -87,26 +89,26 @@ export const Navbar = () => {
             className="fixed inset-0 bg-white z-[60] p-6 flex flex-col"
           >
             <div className="flex justify-between items-center mb-12">
-              <div className="flex items-center gap-3">
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-ink rounded-xl flex items-center justify-center">
                   <div className="w-3 h-3 bg-paper rounded-full" />
                 </div>
                 <span className="font-display font-semibold text-xl tracking-tight">Nextdot</span>
-              </div>
+              </Link>
               <button onClick={() => setIsOpen(false)} className="p-2 bg-surface rounded-full">
                 <X size={24} />
               </button>
             </div>
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <a 
+                <Link 
                   key={link.name} 
-                  href={link.href} 
+                  to={link.href} 
                   onClick={() => setIsOpen(false)}
                   className="text-3xl font-display font-medium tracking-tight border-b border-line pb-4"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="mt-8 flex flex-col gap-4">
                 <button className="w-full py-4 rounded-full border border-line font-medium text-lg">

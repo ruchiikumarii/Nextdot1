@@ -1,45 +1,68 @@
 export const Insights = () => {
   return (
     <section className="py-24 bg-paper relative border-t border-line overflow-hidden">
+      {/* Winding Connecting Line */}
+      <div className="absolute inset-0 pointer-events-none flex justify-center z-0 hidden md:flex">
+        <div className="w-full max-w-7xl relative">
+          <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path 
+              d="M 40 0 C 40 30, 50 30, 50 60 C 50 80, 50 80, 50 100" 
+              stroke="#00E5FF" 
+              strokeWidth="6" 
+              fill="none" 
+              vectorEffect="non-scaling-stroke" 
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ filter: 'drop-shadow(0 0 8px rgba(0,229,255,0.6))' }}
+            />
+          </svg>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Credibility Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-32">
-          <div className="md:col-span-4 bg-surface rounded-3xl p-12 flex flex-col justify-end border border-line h-[300px]">
+        {/* Credibility Stats & Logos Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-32">
+          {/* Left: Title & Compact Stats */}
+          <div className="lg:col-span-5 flex flex-col">
             <div className="text-sm font-medium text-blue-600 mb-4 tracking-wider uppercase">Credibility</div>
-            <h2 className="text-4xl font-display font-medium text-ink leading-tight">
+            <h2 className="text-4xl font-display font-medium text-ink leading-tight mb-8">
               Who we work with
             </h2>
-            <p className="text-ink/60 mt-4">Client logos</p>
+            
+            <div className="grid grid-cols-2 gap-4 mt-auto">
+              <div className="bg-surface border border-line rounded-2xl p-6 flex flex-col justify-center transition-colors hover:border-blue-200">
+                <div className="text-3xl font-display font-medium text-blue-600 mb-1">10+</div>
+                <div className="text-xs font-medium text-ink/60 uppercase tracking-wider">Years Operating</div>
+              </div>
+              <div className="bg-surface border border-line rounded-2xl p-6 flex flex-col justify-center transition-colors hover:border-purple-200">
+                <div className="text-3xl font-display font-medium text-purple-600 mb-1">30+</div>
+                <div className="text-xs font-medium text-ink/60 uppercase tracking-wider">Specialists</div>
+              </div>
+              <div className="bg-surface border border-line rounded-2xl p-6 flex flex-col justify-center transition-colors hover:border-blue-200">
+                <div className="text-3xl font-display font-medium text-blue-600 mb-1">100+</div>
+                <div className="text-xs font-medium text-ink/60 uppercase tracking-wider">Systems Delivered</div>
+              </div>
+              <div className="bg-surface border border-line rounded-2xl p-6 flex flex-col justify-center transition-colors hover:border-purple-200">
+                <div className="text-3xl font-display font-medium text-purple-600 mb-1">3</div>
+                <div className="text-xs font-medium text-ink/60 uppercase tracking-wider">Products Live</div>
+              </div>
+            </div>
           </div>
-          <div className="md:col-span-8 grid grid-cols-2 gap-6">
-            <div className="bg-blue-500 rounded-3xl p-8 text-white flex flex-col justify-between h-[140px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600" />
-              <div className="relative z-10">
-                <div className="text-5xl font-display font-medium mb-2">10+</div>
-                <div className="text-sm font-medium opacity-90">Years Operating</div>
-              </div>
-            </div>
-            <div className="bg-purple-500 rounded-3xl p-8 text-white flex flex-col justify-between h-[140px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600" />
-              <div className="relative z-10">
-                <div className="text-5xl font-display font-medium mb-2">30+</div>
-                <div className="text-sm font-medium opacity-90">Specialists</div>
-              </div>
-            </div>
-            <div className="bg-blue-700 rounded-3xl p-8 text-white flex flex-col justify-between h-[140px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800" />
-              <div className="relative z-10">
-                <div className="text-5xl font-display font-medium mb-2">100+</div>
-                <div className="text-sm font-medium opacity-90">Systems & Campaigns Delivered</div>
-              </div>
-            </div>
-            <div className="bg-purple-700 rounded-3xl p-8 text-white flex flex-col justify-between h-[140px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-800" />
-              <div className="relative z-10">
-                <div className="text-5xl font-display font-medium mb-2">3</div>
-                <div className="text-sm font-medium opacity-90">AI Products in Production</div>
-              </div>
+
+          {/* Right: Logos Grid */}
+          <div className="lg:col-span-7 bg-surface border border-line rounded-3xl p-8 md:p-12 flex items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 w-full">
+              {[
+                "Acme Corp", "GlobalTech", "Nexus Ind.", 
+                "Quantum Fin", "Stark Log", "Wayne Ent",
+                "CyberDyne", "Massive Dyn", "Umbrella"
+              ].map((logo, i) => (
+                <div key={i} className="flex items-center justify-center h-12">
+                  <span className="text-xl font-display font-bold text-ink/20 grayscale hover:grayscale-0 hover:text-ink/80 transition-all duration-300 cursor-default text-center">
+                    {logo}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -56,70 +79,62 @@ export const Insights = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1 */}
-          <div className="bg-surface rounded-3xl p-10 h-[320px] flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-line">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale" 
-              referrerPolicy="no-referrer"
-            />
-            <div className="relative z-20">
-              <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-full mb-4">01 — DISCOVER</span>
-              <h3 className="text-2xl font-display font-medium text-white mb-2 leading-tight pr-12">
+          <div className="bg-surface rounded-3xl p-10 md:p-12 flex flex-col justify-between border border-line group hover:border-blue-200 transition-colors h-[320px]">
+            <div className="flex justify-between items-start">
+              <span className="inline-block px-4 py-1.5 bg-white border border-line text-ink text-xs font-medium rounded-full">01 — DISCOVER</span>
+              <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-display font-medium text-ink mb-4 leading-tight">
                 Map the highest-leverage problem inside your workflow.
               </h3>
-              <div className="absolute bottom-0 right-0 text-cyan-400 text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">✦</div>
             </div>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-surface rounded-3xl p-10 h-[320px] flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-line">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale" 
-              referrerPolicy="no-referrer"
-            />
-            <div className="relative z-20">
-              <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-full mb-4">02 — ARCHITECT</span>
-              <h3 className="text-2xl font-display font-medium text-white mb-2 leading-tight pr-12">
+          <div className="bg-surface rounded-3xl p-10 md:p-12 flex flex-col justify-between border border-line group hover:border-blue-200 transition-colors h-[320px]">
+            <div className="flex justify-between items-start">
+              <span className="inline-block px-4 py-1.5 bg-white border border-line text-ink text-xs font-medium rounded-full">02 — ARCHITECT</span>
+              <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-display font-medium text-ink mb-4 leading-tight">
                 Design the system, integrations, data flow, and governance before building.
               </h3>
-              <div className="absolute bottom-0 right-0 text-cyan-400 text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">✦</div>
             </div>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-surface rounded-3xl p-10 h-[320px] flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-line">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop" 
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale" 
-              referrerPolicy="no-referrer"
-            />
-            <div className="relative z-20">
-              <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-full mb-4">03 — ENGINEER</span>
-              <h3 className="text-2xl font-display font-medium text-white mb-2 leading-tight pr-12">
+          <div className="bg-surface rounded-3xl p-10 md:p-12 flex flex-col justify-between border border-line group hover:border-blue-200 transition-colors h-[320px]">
+            <div className="flex justify-between items-start">
+              <span className="inline-block px-4 py-1.5 bg-white border border-line text-ink text-xs font-medium rounded-full">03 — ENGINEER</span>
+              <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-display font-medium text-ink mb-4 leading-tight">
                 Deploy real systems into real environments. Not isolated pilots.
               </h3>
-              <div className="absolute bottom-0 right-0 text-cyan-400 text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">✦</div>
             </div>
           </div>
 
           {/* Card 4 */}
-          <div className="bg-surface rounded-3xl p-10 h-[320px] flex flex-col justify-end relative overflow-hidden group cursor-pointer border border-line">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop" 
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale" 
-              referrerPolicy="no-referrer"
-            />
-            <div className="relative z-20">
-              <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-full mb-4">04 — OPTIMISE</span>
-              <h3 className="text-2xl font-display font-medium text-white mb-2 leading-tight pr-12">
+          <div className="bg-surface rounded-3xl p-10 md:p-12 flex flex-col justify-between border border-line group hover:border-blue-200 transition-colors h-[320px]">
+            <div className="flex justify-between items-start">
+              <span className="inline-block px-4 py-1.5 bg-white border border-line text-ink text-xs font-medium rounded-full">04 — OPTIMISE</span>
+              <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl md:text-3xl font-display font-medium text-ink mb-4 leading-tight">
                 Continuously improve performance post-deployment. ROI compounds.
               </h3>
-              <div className="absolute bottom-0 right-0 text-cyan-400 text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">✦</div>
             </div>
           </div>
         </div>

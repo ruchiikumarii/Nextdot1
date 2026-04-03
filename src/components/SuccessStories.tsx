@@ -1,6 +1,23 @@
 export const SuccessStories = () => {
   return (
     <section className="py-24 bg-paper relative border-t border-line overflow-hidden">
+      {/* Winding Connecting Line */}
+      <div className="absolute inset-0 pointer-events-none flex justify-center z-0 hidden md:flex">
+        <div className="w-full max-w-7xl relative">
+          <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path 
+              d="M 60 0 C 60 20, 95 20, 95 50 C 95 80, 95 80, 95 100" 
+              stroke="#00E5FF" 
+              strokeWidth="6" 
+              fill="none" 
+              vectorEffect="non-scaling-stroke" 
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ filter: 'drop-shadow(0 0 8px rgba(0,229,255,0.6))' }}
+            />
+          </svg>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div>

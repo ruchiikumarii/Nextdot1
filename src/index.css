@@ -21,6 +21,24 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
   }
+
+  /* Custom Scrollbar for a premium feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink/40;
+  }
 }
 
 .glass-panel {

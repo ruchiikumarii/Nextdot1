@@ -57,36 +57,76 @@ const GlowingOrb = () => {
 };
 
 export const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 2.2, // Wait for preloader
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <section className="pt-40 pb-32 relative overflow-hidden bg-paper">
+      {/* Winding Connecting Line */}
+      <div className="absolute inset-0 pointer-events-none flex justify-center z-0 hidden md:flex">
+        <div className="w-full max-w-7xl relative">
+          <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path 
+              d="M 20 35 C 45 35, 45 50, 45 60 C 45 70, 5 70, 5 80 C 5 90, 50 90, 50 100" 
+              stroke="#00E5FF" 
+              strokeWidth="6" 
+              fill="none" 
+              vectorEffect="non-scaling-stroke" 
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ filter: 'drop-shadow(0 0 8px rgba(0,229,255,0.6))' }}
+            />
+          </svg>
+          <div className="absolute top-[35%] left-[20%] w-4 h-4 -ml-[8px] -mt-[8px] rounded-full bg-[#00E5FF] shadow-[0_0_16px_rgba(0,229,255,1)]" />
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="max-w-5xl mb-24"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium tracking-tight text-ink mb-8 leading-[1.1]">
-            Domain Engineered AI Products & Agents For Enterprise
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium tracking-tight text-ink mb-8 leading-[1.1] flex flex-wrap gap-x-4 gap-y-2">
+            {["Domain", "Engineered", "AI", "Products", "&", "Agents", "For", "Enterprise"].map((word, i) => (
+              <motion.span key={i} variants={itemVariants} className="inline-block">
+                {word}
+              </motion.span>
+            ))}
           </h1>
-          <p className="text-xl text-ink/60 max-w-3xl leading-relaxed mb-12">
+          <motion.p variants={itemVariants} className="text-xl text-ink/60 max-w-3xl leading-relaxed mb-12">
             Real transformation needs an architected agentic ecosystem — not isolated use cases. Nextdot builds AI operating systems for enterprises that are no longer experimenting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          </motion.p>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
             <button className="bg-ink text-paper px-8 py-4 rounded-full font-medium hover:bg-blue-600 transition-colors">
               See What We Build →
             </button>
             <button className="bg-surface border border-line text-ink px-8 py-4 rounded-full font-medium hover:bg-paper transition-colors">
               Talk to Us →
             </button>
-          </div>
+          </motion.div>
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-12 relative">
-          {/* Connecting Lines */}
-          <div className="absolute -top-40 left-[50%] w-px h-40 bg-gradient-to-b from-transparent to-blue-500 hidden md:block" />
-          <div className="absolute top-0 left-[50%] w-2 h-2 -ml-[3px] rounded-full bg-blue-500 hidden md:block shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
-          <div className="absolute top-0 left-[50%] w-px h-[120%] bg-line hidden md:block" />
-
           <div className="w-full md:w-1/2 relative h-[400px] flex items-center justify-center">
             <GlowingOrb />
           </div>
@@ -101,37 +141,29 @@ export const Hero = () => {
               <p className="text-ink/70 leading-relaxed mb-6 text-sm">
                 Moving AI into production is not a model problem — it’s a systems problem. It requires domain context, workflow integration, and engineering accountability.
               </p>
-              <div className="space-y-4">
-                <div>
-                  <div className="font-medium text-ink text-sm">01 — The Integration Gap</div>
-                  <div className="text-xs text-ink/60 mt-1">Multiple tools. Disconnected workflows. What looks like AI adoption is actually fragmentation.</div>
-                </div>
-                <div>
-                  <div className="font-medium text-ink text-sm">02 — The Accountability Gap</div>
-                  <div className="text-xs text-ink/60 mt-1">Vendors deliver decks. Your internal team inherits complexity without clarity.</div>
-                </div>
-                <div>
-                  <div className="font-medium text-ink text-sm">03 — The Architecture Gap</div>
-                  <div className="text-xs text-ink/60 mt-1">Pilots don’t scale. Real transformation needs an AI operating system — not scattered experiments.</div>
-                </div>
+              <div className="space-y-1 mt-6">
+                {[
+                  { num: "01", title: "The Integration Gap", desc: "Multiple tools. Disconnected workflows. What looks like AI adoption is actually fragmentation." },
+                  { num: "02", title: "The Accountability Gap", desc: "Vendors deliver decks. Your internal team inherits complexity without clarity." },
+                  { num: "03", title: "The Architecture Gap", desc: "Pilots don’t scale. Real transformation needs an AI operating system — not scattered experiments." }
+                ].map((item, i) => (
+                  <div key={i} className="group relative p-4 -mx-4 rounded-2xl transition-all duration-500 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-transparent hover:border-line/50 cursor-default">
+                    <div className="font-medium text-ink text-sm flex items-center gap-2 transform transition-transform duration-500 group-hover:translate-x-2">
+                      <span className="text-blue-500/60 group-hover:text-blue-600 transition-colors duration-500">{item.num}</span>
+                      <span className="text-ink/30">—</span>
+                      <span className="group-hover:text-blue-600 transition-colors duration-500">{item.title}</span>
+                    </div>
+                    <div className="text-xs text-ink/60 mt-2 transform transition-transform duration-500 group-hover:translate-x-2 pl-7 leading-relaxed">
+                      {item.desc}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Credibility Strip */}
-      <div className="absolute bottom-0 left-0 w-full border-t border-line bg-paper/80 backdrop-blur-md py-4 px-6 flex justify-center items-center text-sm font-medium text-ink/80 text-center z-20">
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
-          <span>10+ Years in Enterprise</span>
-          <span className="hidden sm:inline">·</span>
-          <span>30+ Specialists</span>
-          <span className="hidden sm:inline">·</span>
-          <span>3 Engineering Tracks</span>
-          <span className="hidden sm:inline">·</span>
-          <span>1 AI Capability Center</span>
-        </div>
-      </div>
     </section>
   );
 };
